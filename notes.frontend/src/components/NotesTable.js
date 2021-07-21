@@ -17,7 +17,6 @@ export const NotesTable = () => {
             <tr>
                 <td style={{textAlign:'left', fontWeight:'bold'}}>Note</td>
                 <td style={{textAlign:'left', fontWeight:'bold'}}>Id</td>
-                <td></td>
             </tr>
         </thead>
         <tbody>        
@@ -30,7 +29,7 @@ export const NotesTable = () => {
                             <Button className='btn btn-danger' onClick={() => DeleteNote(dispatch,n)}>Delete</Button>  
                         </td>
                         <td>
-                            <UpdateNoteModal  note ={n.value}/>
+                            <UpdateNoteModal  note ={n}/>
                         </td>
                     </tr>
                 )

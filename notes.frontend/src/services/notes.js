@@ -1,19 +1,18 @@
 import { ActionCreators } from "../redux/notesReducer";
+import * as axios from 'axios';
+
+const axiosInstance = axios.create({
+    baseURL: 'https://localhost:44326/notes',
+})
 
 
 export const GetNotes = async (dispatch) => {
     try{ 
         //api call
-        const response = [
-            {value: 'Study for exam in 3 weeks', id: 1},
-            {value: 'At tthis rate I will be a master in no time', id: 2},
-            {value: 'Build more full-stack applications', id: 3},
-            {value: 'I love writing notes', id: 4},
-        ];
-
-        dispatch(ActionCreators.setNotes(response));
+        const { data } = await axiosInstance.get();
+        dispatch(ActionCreators.setNotes(data));
     }catch{
-        console.log("Error!")
+        console.log("Error getting all notes!")
     }
 }
 
@@ -21,33 +20,29 @@ export const GetNotes = async (dispatch) => {
 export const DeleteNote = async (dispatch, note) => {
     try{ 
         //api call
-        
-
+        await axiosInstance.delete(`/${note.id}`);
         dispatch(ActionCreators.deleteNote(note));
     }catch{
-        console.log("Error!")
+        console.log("Error deleting note!")
     }
 }
 
 export const CreateNote = async (dispatch, note) => {
     try{ 
         //api call
-        
-        const response = {value: note, id: 1};
-            
-        dispatch(ActionCreators.createNote(response));
+        const { data } = await axiosInstance.post('', note);
+        dispatch(ActionCreators.createNote(data));
     }catch{
-        console.log("Error!")
+        console.log("Error creating note!")
     }
 }
 export const UpdateNote = async (dispatch, note) => {
     try{ 
+
         //api call
-        
-        //const response = {value: 'Study for exam in 3 weeks', id: 1};
-        const response = {value: note, id: 1};
-        dispatch(ActionCreators.updateNote(response));
+        await axiosInstance.put('', note);
+        dispatch(ActionCreators.updateNote(note));
     }catch{
-        console.log("Error!")
+        console.log("Error editing note!")
     }
 }
