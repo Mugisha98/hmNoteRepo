@@ -5,7 +5,7 @@ const axiosInstance = axios.create({
     baseURL: 'https://localhost:44326/notes',
 })
 
-
+//Get all notes
 export const GetNotes = async (dispatch) => {
     try{ 
         //api call
@@ -16,7 +16,7 @@ export const GetNotes = async (dispatch) => {
     }
 }
 
-
+//Delete note by id
 export const DeleteNote = async (dispatch, note) => {
     try{ 
         //api call
@@ -26,7 +26,7 @@ export const DeleteNote = async (dispatch, note) => {
         console.log("Error deleting note!")
     }
 }
-
+//Create note
 export const CreateNote = async (dispatch, note) => {
     try{ 
         //api call
@@ -36,6 +36,7 @@ export const CreateNote = async (dispatch, note) => {
         console.log("Error creating note!")
     }
 }
+//Update note
 export const UpdateNote = async (dispatch, note) => {
     try{ 
 
