@@ -64,3 +64,5 @@ const NoteModal = ({note, handleFormSubmit, show, handleClose}) =>
         </Modal>
     );
   }
+
+  export default NoteModal; 
