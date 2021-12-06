@@ -12,7 +12,9 @@ export const NotesTable = () => {
     useEffect(() => {  
         GetNotes(dispatch);
     }, []); 
-    return <table className = 'table table-dark'>
+    return 
+    <>
+    <table className = 'table table-dark'>
         <thead>
             <tr>
                 <td style={{textAlign:'left', fontWeight:'bold'}}>Note</td>
@@ -36,4 +38,7 @@ export const NotesTable = () => {
             }
         </tbody>
     </table>
+ </>
 }
+
+export default NotesTable;
